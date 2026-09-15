@@ -162,3 +162,43 @@ def main(gpt_config, settings):
     )
 
     return train_losses, val_losses, model
+
+
+if __name__ == "__main__":
+
+    GPT_CONFIG_124M = {
+        "vocab_size": 50257,    # Vocabulary size
+        "context_length": 256,  # Shortened context length (orig: 1024)
+        "emb_dim": 768,         # Embedding dimension
+        "n_heads": 12,          # Number of attention heads
+        "n_layers": 12,         # Number of layers
+        "drop_rate": 0.1,       # Dropout rate
+        "qkv_bias": False       # Query-key-value bias
+    }
+
+    OTHER_SETTINGS = {
+        "learning_rate": 5e-4,
+        "num_epochs": 10,
+        "batch_size": 2,
+        "weight_decay": 0.1
+    }
+
+    ###########################
+    # Initiate training
+    ###########################
+
+    train_losses, val_losses, tokens_seen, model = main(GPT_CONFIG_124M, OTHER_SETTINGS)
+
+    ###########################
+    # After training
+    ###########################
+
+    # Plot results
+    epochs_tensor = torch.linspace(0, OTHER_SETTINGS["num_epochs"], len(train_losses))
+    plot_losses(epochs_tensor, tokens_seen, train_losses, val_losses)
+    plt.savefig("loss.pdf")
+
+    # Save and load model
+    torch.save(model.state_dict(), "model.pth")
+    model = GPTModel(GPT_CONFIG_124M)
+    model.load_state_dict(torch.load("model.pth", weights_only=True))
