@@ -183,15 +183,9 @@ if __name__ == "__main__":
         "weight_decay": 0.1
     }
 
-    ###########################
-    # Initiate training
-    ###########################
 
     train_losses, val_losses, tokens_seen, model = main(GPT_CONFIG_124M, OTHER_SETTINGS)
 
-    ###########################
-    # After training
-    ###########################
 
     # Plot results
     epochs_tensor = torch.linspace(0, OTHER_SETTINGS["num_epochs"], len(train_losses))
