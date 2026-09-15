@@ -19,14 +19,14 @@ def token_ids_to_text(token_ids, tokenizer: BPETokenizer):
     return tokenizer.decode(flat.tolist())
 
 
-def calc_loss_batch(input_batch, target_batch, model, device="cpu"):
+def calc_loss_batch(input_batch, target_batch, model, device="cuda"):
     input_batch, target_batch = input_batch.to(device), target_batch.to(device)
     logits = model(input_batch)
     loss = torch.nn.functional.cross_entropy(logits.flatten(0, 1), target_batch.flatten())
     return loss
 
 
-def calc_loss_loader(data_loader, model, device="cpu", num_batches=None):
+def calc_loss_loader(data_loader, model, device="cuda", num_batches=None):
     total_loss = 0.
     if len(data_loader) == 0:
         return float("nan")
