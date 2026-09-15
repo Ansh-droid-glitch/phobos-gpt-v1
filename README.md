@@ -28,6 +28,26 @@ The implementation is presented in python files as it is easier for me to work w
 ## Installation
 
 ```bash
+# Clone the repo
+git clone https://github.com/Ansh-droid-glitch/phobos-gpt-v1.git
+cd phobos-gpt-v1
+
+# Create and activate a virtual python enviornment
+python -m venv
+source venv/bin/activate # macOS / Linux
+# venv\bin\activate # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+---
+
+## Usage
+
+```bash
+# Make sure you are in your virtual python enviornment
+python train.py
 ```
 
 ---
