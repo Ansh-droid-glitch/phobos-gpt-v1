@@ -6,9 +6,9 @@ GPT From-scratch implementation of GPT-2 (124M) language model in PyTorch, cover
 
 ## Overview
 
-This was an project i made in a week to learn more about LLM's, the components are:
+This was an project I made in a week to learn more about LLM's, the components are:
 
-- Byte Pair Encoding (BPE) tokenization via 'tiktoken' (Note: This as not written from scratch and was imported from the tiktoken library)
+- Byte Pair Encoding (BPE) tokenization via 'tiktoken' (Note: This was not written from scratch and was imported from the tiktoken library)
 - Token and positional embeddings
 - Multi-Head casual attention with scaled dot-product scores
 - Transformers vlocks with pre-norm residual connections
