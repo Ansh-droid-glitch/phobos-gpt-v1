@@ -122,7 +122,7 @@ def main(gpt_config, settings):
 
 
     torch.manual_seed(123)
-    device = "cpu"
+    device = "cuda"
 
     model = GPTModel(gpt_config)
     model.to(device)
